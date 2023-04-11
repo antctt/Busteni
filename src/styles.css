@@ -1,0 +1,71 @@
+body, html, #root {
+    margin: 0;
+  }
+.homeContainer {
+    /* display: flex;  */
+    /* justify-content: center; */
+    /* align-items: center; */
+    height: 80vh;
+    background-image: url('./images/house-preview.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .welcome-message-container {
+    position: fixed;
+    top: 25%;
+    left: 20%;
+    z-index: 1;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+
+  .about-us-row {
+    position: fixed;
+    top: 500px
+  }
+  
+
+  
+/* .position-relative {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeContainer {
+    background-image: url(./images/house-preview.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+  }
+  
+    .welcome-message-container {
+        position: absolute;
+        top: 15%;
+        left: 15%;
+        z-index: 1;
+        font-size: 48px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .about-us {
+        display: flex;
+        align-items: center;
+    }
+    
+    .about-us h2 {
+        margin-right: 20px;
+    }
+
+     */

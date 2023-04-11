@@ -1,0 +1,43 @@
+.home-container {
+    padding: 0;
+  }
+  
+  .full-width-image {
+    height: 600px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .welcome-message-container {
+    position: absolute;
+    color: black;
+    top: 20%;
+    left: 20%;
+    z-index: 1;
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+  }
+  
+  .book-now-button {
+    margin-top: 20px;
+  }
+  
+  .about-us-row {
+    text-align: center;
+    padding-top: 50px;
+  }
+  
+  .about-us-row h1 {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .about-us-row p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #666;
+  }
+  
