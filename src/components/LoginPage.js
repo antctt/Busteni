@@ -23,8 +23,8 @@ const LoginPage = () => {
   };
 
   return (
-    <Container className="mt-5">
-      <h2 className="mb-4">Log In</h2>
+    <Container className="mt-5" style={{ width: "600px" }}>
+      <h2 className="text-center my-3 mt-5">Log In</h2>
       {error && <Alert variant="danger">{error}</Alert>}
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="email">

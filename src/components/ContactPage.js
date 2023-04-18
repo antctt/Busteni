@@ -26,7 +26,7 @@ const ContactForm = () => {
       <Container style={{ width: "600px" }}>
         <Row>
           <Col>
-            <h2 className="mt-5">Contact Us</h2>
+            <h2 className="text-center my-3 mt-5">Contact Us</h2>
             <Formik
               initialValues={{ name: '', email: '', message: '' }}
               validationSchema={validationSchema}

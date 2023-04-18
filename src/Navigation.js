@@ -56,9 +56,14 @@ const Navigation = () => {
                 </Nav.Link>
               </>
             ) : (
-              <Nav.Link onClick={handleLogout}>
-                Log Out
-              </Nav.Link>
+              <Nav>
+                <Nav.Link onClick={handleLogout}>
+                  Log Out
+                </Nav.Link>
+                <Nav.Link as={Link} to="/profile">
+                My Profile
+                </Nav.Link>
+              </Nav>
             )}
           </Nav>
         </Navbar.Collapse>

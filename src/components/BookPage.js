@@ -71,7 +71,7 @@ const BookPage = () => {
         <h2>Loading...</h2>
       ) : !user ? (
         <>
-          <h2>Please Log In or Sign Up to book a house</h2>
+          <h2 className="text-center my-3">Please Log In or Sign Up to book a house</h2>
           <Row className="justify-content-center my-5">
             <Col xs="auto">
               <Button variant="primary" onClick={() => navigate("/login")}>
@@ -87,7 +87,7 @@ const BookPage = () => {
         </>
       ) : (
         <>
-          <h2>Hello, {user.displayName || user.email}</h2>
+          <h2 className="text-center my-3 mt-5">Book a stay!</h2>
           <Form>
             <Form.Group className="mb-3">
               <Form.Label>Start Date</Form.Label>
