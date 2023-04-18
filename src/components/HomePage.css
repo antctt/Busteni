@@ -1,5 +1,6 @@
 .home-container {
-    padding: 0;
+    padding: 0 !important;
+    margin: 0 !important;
   }
   
   .full-width-image {
@@ -41,3 +42,21 @@
     color: #666;
   }
   
+  .gallery{
+    padding: 15px 0;
+  }
+
+  img{
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .gallery img{
+    /* background-color: #41332d; */
+    padding: 15px;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }

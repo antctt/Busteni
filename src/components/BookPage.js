@@ -66,7 +66,7 @@ const BookPage = () => {
 
 
   return (
-    <Container className="mt-5">
+    <Container className="mt-5" style={{ width: "600px" }}>
       {loading ? (
         <h2>Loading...</h2>
       ) : !user ? (
