@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Image } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 import { auth, db } from '../firebase';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import './HomePage.css';

@@ -1,0 +1,50 @@
+.title {
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.description {
+  /* text-align: center; */
+  margin-bottom: 2rem;
+  /* font-style: italic; */
+  justify-content:left;
+}
+
+.weekend-container {
+  margin-bottom: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.buttons classic-button {
+  
+}
+
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #6c757d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.circle-row {
+  margin-bottom: 1rem;
+}

@@ -44,6 +44,9 @@ const Navigation = () => {
             <Nav.Link as={Link} to="/contact">
               Contact
             </Nav.Link>
+            <Nav.Link as={Link} to="/gotogether">
+              Go Together
+            </Nav.Link>
           </Nav>
           <Nav>
             {!user ? (
