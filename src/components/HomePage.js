@@ -10,7 +10,7 @@ import carouselImage3 from '../images/carousel_img3.jpg';
 
 const HomePage = () => {
   return (
-    <Container className="home-container min-vh-100">
+    <Container className="container-fluid">
       <Row className="position-relative">
         <Col className="full-width-image" style={{backgroundImage: `url(${housePreview})`}}>
           <div className="welcome-message-container">

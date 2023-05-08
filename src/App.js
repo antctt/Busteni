@@ -7,6 +7,7 @@ import LoginPage from './components/LoginPage';
 import BookPage from './components/BookPage';
 import ContactPage from './components/ContactPage';
 import Profile from './components/Profile';
+import GoTogether from './components/GoTogether';
 import { Container } from 'react-bootstrap';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/book" element={<BookPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/gotogether" element={<GoTogether />} />
           </Routes>
         </Container>
       </Router>

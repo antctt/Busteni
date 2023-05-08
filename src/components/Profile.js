@@ -38,7 +38,7 @@ const Profile = () => {
   
     return (
         <Container className="mt-5" style={{ width: "70%" }}>
-          <Row className="gallery justify-content-center mt-4">
+          <Row className="profile justify-content-center mt-4">
             <Col xs={12} md={4} className="text-center">
               <Image
                 src={user?.profilePicture || 'https://via.placeholder.com/150'}

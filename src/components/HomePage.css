@@ -3,8 +3,13 @@
     margin: 0 !important;
   }
   
+  .container-fluid{
+    padding: 0;
+ }
+ 
   .full-width-image {
     height: 600px;
+    width: 100%;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -56,6 +61,14 @@
   .gallery img{
     /* background-color: #41332d; */
     padding: 15px;
+    width: 100%;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
+
+  .profile img{
+    /* background-color: #41332d; */
+    padding: 10px;
     width: 100%;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
     cursor: pointer;
