@@ -16,6 +16,12 @@
   background-color: #f8f9fa;
   border-radius: 0.5rem;
   padding: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  /* make the max with smaller and the min width higher */
+  max-width: 800px;
+  min-width: 400px;
+
 }
 
 .header {
@@ -47,4 +53,11 @@
 
 .circle-row {
   margin-bottom: 1rem;
+}
+
+.circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
