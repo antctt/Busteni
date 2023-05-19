@@ -6,6 +6,7 @@ import './WeekendEvents.css';
 const WeekendEvents = () => {
   const [weekends, setWeekends] = useState([]);
   const [user, setUser] = useState(null);
+  const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
     const getRemainingWeekends = () => {
@@ -30,6 +31,19 @@ const WeekendEvents = () => {
       }
       return weekends;
     };
+
+    const fetchBookingsFromFirestore = async () => {
+      const snapshot = await db.collection('Bookings').get();
+      const bookings = snapshot.docs.map((doc) => {
+        const booking = { id: doc.id, ...doc.data() };
+        booking.startDate = new Date(booking.startDate);
+        booking.endDate = new Date(booking.endDate);
+        return booking;
+      });
+      setBookings(bookings);
+    };
+
+    fetchBookingsFromFirestore();
   
     const addWeekendsToFirestore = async (weekends) => {
       for (const weekend of weekends) {
@@ -80,6 +94,15 @@ const WeekendEvents = () => {
     };
 
   }, []);
+
+  const isWeekendBooked = (weekend) => {
+    return bookings.some((booking) => {
+      const weekendStart = new Date(weekend.id.split('-'));
+      const weekendEnd = new Date(weekend.id.split('-'));
+      weekendEnd.setDate(weekendEnd.getDate() + 2);
+      return booking.startDate <= weekendEnd && booking.endDate >= weekendStart;
+    });
+  };
 
   const handleJoin = async (weekendId) => {
     if (!user) {
@@ -154,30 +177,50 @@ const WeekendEvents = () => {
         You can also confirm your attendance to a trip that you have already joined. You can only join one trip at a time, so make sure you confirm your attendance before joining another trip.
       </p>
       {weekends.map((weekend) => (
-        <div key={weekend.id} className="weekend-container">
-          <div className="header">
-            <h3>{weekend.dateRange}</h3>
-            <div className="buttons">
-              <Button variant="success" className="join-btn" onClick={() => handleJoin(weekend.id)}>Join</Button>
-              <Button variant="danger" className="leave-btn" onClick={() => handleLeave(weekend.id)}>Leave</Button>
-              {/* <Button variant="secondary" className="confirm-btn">Confirm</Button> */}
-            </div>
+        <div key={weekend.id} className="weekend-container" style={{ height: isWeekendBooked(weekend) ? "70px" : "normalHeight" }}>
+        <div className="header">
+          <h3>{weekend.dateRange}
+          {isWeekendBooked(weekend) && <span style={{ color: 'green' }}> (Booked)</span>}</h3>
+          <div className="buttons">
+          <Button 
+            variant="success" 
+            className="join-btn" 
+            onClick={() => handleJoin(weekend.id)}
+            disabled={isWeekendBooked(weekend)} // Add this line
+          >
+            Join
+          </Button>
+
+          <Button 
+            variant="danger" 
+            className="leave-btn" 
+            onClick={() => handleLeave(weekend.id)}
+            disabled={isWeekendBooked(weekend)} // Add this line
+          >
+            Leave
+          </Button>
           </div>
-          <Row className="circle-row">
-            {[...Array(6).keys()].map((index) => (
-              <Col key={index} xs={2}>
-                <Circle weekendId={weekend.id} index={index}/>
-              </Col>
-            ))}
-          </Row>
-          <Row className="circle-row">
-            {[...Array(6).keys()].map((index) => (
-              <Col key={index} xs={2}>
-                <Circle />
-              </Col>
-            ))}
-          </Row>
         </div>
+        {!isWeekendBooked(weekend) && (
+          <>
+            <Row className="circle-row">
+              {[...Array(6).keys()].map((index) => (
+                <Col key={index} xs={2}>
+                  <Circle weekendId={weekend.id} index={index}/>
+                </Col>
+              ))}
+            </Row>
+            <Row className="circle-row">
+              {[...Array(6).keys()].map((index) => (
+                <Col key={index} xs={2}>
+                  <Circle />
+                </Col>
+              ))}
+            </Row>
+          </>
+        )}
+      </div>
+      
       ))}
     </Container>
   );
