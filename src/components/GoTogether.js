@@ -129,39 +129,34 @@ const WeekendEvents = () => {
 
   }, []);
 
-  const isWeekendBooked = (weekendId) => {
-    console.log(`Checking if weekend ${weekendId} is booked...`);
-
-    // Convert weekendId to a Date object
-    const weekendDate = new Date(weekendId);
-
-    const booking = bookings.find((booking) => {
+  const isWeekendBooked = (weekend) => {
+    // Parse the weekend's start and end dates
+    const weekendStartDate = new Date(weekend.id);
+    const weekendEndDate = new Date(weekendStartDate);
+    weekendEndDate.setDate(weekendEndDate.getDate() + 2);
+  
+    // Check each booking
+    for (let booking of bookings) {
+        // Parse the booking's start and end dates
         const bookingStartDate = new Date(booking.startDate);
-        return bookingStartDate.getFullYear() === weekendDate.getFullYear() &&
-               bookingStartDate.getMonth() === weekendDate.getMonth() &&
-               bookingStartDate.getDate() === weekendDate.getDate();
-    });
+        const bookingEndDate = new Date(booking.endDate);
+      
+        // Count the number of users associated with the booking
+        const userCount = booking.userName.split(',').length;
 
-    console.log(`Found booking: `, booking);
-
-    if (!booking) {
-      return false;
+        // If the booking's start date is within the weekend, or if the booking's end date is within the weekend, and there is only 1 user or 12 or more users, return true
+        if (
+            ((bookingStartDate >= weekendStartDate && bookingStartDate <= weekendEndDate) ||
+            (bookingEndDate >= weekendStartDate && bookingEndDate <= weekendEndDate)) &&
+            (userCount === 1 || userCount >= 12)
+        ) {
+            return true;
+        }
     }
-
-    // Check if the booking has multiple users
-    const users = booking.userName.split(', ');
-    console.log(`Users: `, users);
-
-    if (users.length > 1) {
-      // If it has multiple users, only mark it as booked if it has 12 users
-      return users.length >= 12;
-    }
-
-    // If it has only one user, mark it as booked directly
-    return true;
+  
+    // If no bookings were within the weekend, return false
+    return false;
 };
-
-
   
 
   const handleJoin = async (weekendId) => {
