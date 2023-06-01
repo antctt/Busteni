@@ -62,6 +62,8 @@ const BookPage = () => {
       startDate: startDate.toISOString(),
       endDate: endDate.toISOString(),
     });
+    alert('Booking successful!');
+    navigate('/profile');
   };
 
 
