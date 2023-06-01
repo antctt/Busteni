@@ -8,7 +8,8 @@ import './HomePage.css';
 const Profile = () => {
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-  
+    const [bookings, setBookings] = useState([]); // new state for storing user bookings
+
     useEffect(() => {
       const getUserData = async () => {
         try {
@@ -28,6 +29,23 @@ const Profile = () => {
       }
     }, []);
   
+    useEffect(() => {
+      const getUserBookings = async () => {
+        try {
+          const bookingDocs = await db.collection('Bookings')
+            .where('userName', '==', user?.email).get();
+          setBookings(bookingDocs.docs.map(doc => doc.data()));
+        } catch (error) {
+          console.error('Error fetching user bookings:', error);
+        }
+      };
+
+      if (user) {
+        getUserBookings();
+      }
+    }, [user]);
+
+
     if (isLoading) {
       return <p>Loading...</p>;
     }
@@ -69,6 +87,23 @@ const Profile = () => {
                   Edit Profile
                 </Button>
               </Form>
+            </Col>
+          </Row>
+          <Row className="mt-4">
+            <Col xs={12}>
+                <h4>Your Bookings</h4>
+                {bookings.map((booking, index) => {
+                    const startDate = new Date(booking.startDate);
+                    const endDate = new Date(booking.endDate);
+                    const formattedStartDate = `${startDate.getDate()}`;
+                    const formattedEndDate = `${endDate.getDate()} ${endDate.toLocaleString('default', { month: 'long' })} ${endDate.getFullYear()}`;
+
+                    return (
+                        <div key={index}>
+                            <p>{formattedStartDate} - {formattedEndDate}</p>
+                        </div>
+                    );
+                })}
             </Col>
           </Row>
         </Container>
