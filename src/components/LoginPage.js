@@ -16,7 +16,7 @@ const LoginPage = () => {
     const auth = getAuth();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/');
+      navigate('/profile');
     } catch (error) {
       setError(error.message);
     }
