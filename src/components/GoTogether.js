@@ -70,7 +70,7 @@ const WeekendEvents = () => {
         const now = new Date();
         const weekendStartDate = new Date(weekend.id.split('-'));
     
-        // If the weekend has passed, delete it from the database
+        // If the weekend has passed, delete it from the database 
         if (weekendStartDate < now) {
           await db.collection('weekends').doc(weekend.id).delete();
           return null;

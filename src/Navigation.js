@@ -39,7 +39,7 @@ const Navigation = () => {
               Home
             </Nav.Link>
             <Nav.Link as={Link} to="/book">
-              Book
+              Book Now
             </Nav.Link>
             <Nav.Link as={Link} to="/contact">
               Contact
@@ -60,7 +60,7 @@ const Navigation = () => {
               </>
             ) : (
               <Nav>
-                <Nav.Link onClick={handleLogout}>
+                <Nav.Link onClick={handleLogout} as={Link} to="/signup">
                   Log Out
                 </Nav.Link>
                 <Nav.Link as={Link} to="/profile">

@@ -50,7 +50,7 @@ const RegisterPage = () => {
   };
 
   return (
-    <Container className="mt-5" style={{ width: "600px" }}>
+    <Container className="mt-5" style={{ maxWidth: "600px" }}>
       <h2 className="text-center my-3 mt-5">Sign Up</h2>
       {error && <Alert variant="danger">{error}</Alert>}
 

@@ -23,7 +23,7 @@ const ContactForm = () => {
   return (
     <>
       <ToastContainer />
-      <Container style={{ width: "600px" }}>
+      <Container style={{ maxWidth: "600px" }}>
         <Row>
           <Col>
             <h2 className="text-center my-3 mt-5">Contact Us</h2>
